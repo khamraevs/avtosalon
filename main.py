@@ -1,9 +1,13 @@
 from flask import Flask, render_template, request
+from functions import add_new_car
 import db
+
+cars = db.cars
+
 app = Flask(__name__)
 @app.route("/")
 def lolo_pepe():
-    data = db.cars
+    data = cars
     return render_template("index.html", cars=data)
 
 @app.route("/about")
@@ -12,8 +16,8 @@ def about_page():
 
 @app.route("/cars/")
 def info_cars():
-    import db
-    return render_template("cars.html", cars=db.cars)
+    
+    return render_template("cars.html", cars=cars)
 
 @app.route("/new_car", methods=["GET", "POST"])
 def new_car():
@@ -25,8 +29,10 @@ def new_car():
         info = request.form.get("info")
         logo = request.form.get("logo")
         image = request.form.get("image")
-
-        return f"{company}"
+        
+        
+        add_new_car(cars, company, model, info, logo, image)
+        return render_template("new_car.html")
 
 app.run(debug=True)
 
