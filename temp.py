@@ -1,32 +1,26 @@
 cars = {
     "byd": {
+            "model":    "arrizo",
+            "info":     "arrizo Mustang",
+            "logo":     "arrizo_logo",
+            "image":    "arrizo_jpg",
+            },
+    "ford": {
             "model":    "Ford",
             "info":     "Ford Mustang",
             "logo":     "ford_logo",
             "image":    "ford_jpg",
-            } 
+            }, 
 }
 
-def add_new_car(cars, marka, 
-                model, info, 
-                logo, image):
-    new_car = {marka: {
-                "model":    model,
-                "info":     info,
-                "logo":     logo,
-                "image":    image
-                }} 
-    cars.update(new_car)
-    return "All done"
+# # 1 metod
+# del cars["ford"]
+# print(cars)
 
-marka = "Chevrolet"
-model = "Camaro" 
-info = "Camaro is bumblebee" 
-logo = "camaro_logo" 
-image = "camaro image"
+# # 2 metod
+def delete_car(dict_car, car_name):
+    car = dict_car.pop(car_name)
+    return car
 
-add_new_car(cars, marka, 
-            model, info, 
-            logo, image)
-
-print(cars.keys())
+a = delete_car(cars, "ford")
+print(a)

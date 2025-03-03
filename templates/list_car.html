@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List of cars</title>
+</head>
+<body>
+    {%for car in cars %}
+        <h3>{{car}}</h3><h4>{{cars[car]["model"]}}</h4> <a href="" >delete</a>
+    </br>
+    {%endfor%}
+    </body>
+</html>
