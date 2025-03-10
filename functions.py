@@ -9,3 +9,7 @@ def add_new_car(cars, marka,
                 }} 
     cars.update(new_car)
     return "All done"
+
+def delete_car(dict_car, car_name):
+    car = dict_car.pop(car_name)
+    return car

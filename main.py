@@ -1,5 +1,5 @@
-from flask import Flask, render_template, request
-from functions import add_new_car
+from flask import Flask, render_template, request, url_for, redirect
+from functions import add_new_car, delete_car
 import db
 
 cars = db.cars
@@ -14,7 +14,7 @@ def lolo_pepe():
 def about_page():
     return render_template("about.html")
 
-@app.route("/cars/")
+@app.route("/cars")
 def info_cars():
     return render_template("cars.html", cars=cars)
 
@@ -34,6 +34,13 @@ def new_car():
 @app.route("/list_car")
 def list_car():
     return render_template("list_car.html", cars=cars)
+
+@app.route("/delete_car_name/<car_name>")
+def delete_car_name(car_name=None):
+    delete_car(cars, car_name)
+    return  redirect(url_for('list_car'))
+
+
 
 app.run(debug=True)
 
